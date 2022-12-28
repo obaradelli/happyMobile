@@ -128,7 +128,7 @@ export default function OrphanageDetails() {
             </Text>
           </View>
 
-          {orphanage.open_on_weekends ? (
+          {orphanage.open_on_weekends === true ? (
             <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
               <Feather name="info" size={40} color="#39CC83" />
               <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>

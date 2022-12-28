@@ -29,7 +29,7 @@ export default function OrphanageData() {
   const [about, setAbout] = useState("");
   const [instructions, setInstructions] = useState("");
   const [opening_hours, setOpeningHours] = useState("");
-  const [open_on_weekends, setOpenOnWeekends] = useState(false);
+  const [open_on_weekends, setOpenOnWeekends] = useState(true);
 
   const params = route.params as OrphanageDataRouteParams;
   const { latitude, longitude } = params.position;
