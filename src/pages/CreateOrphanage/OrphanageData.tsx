@@ -67,7 +67,7 @@ export default function OrphanageData() {
       return;
     }
 
-    const result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
       quality: 1,
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
