@@ -12,7 +12,9 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
+
 import * as ImagePicker from "expo-image-picker";
+
 import api from "../../services/api";
 
 interface OrphanageDataRouteParams {
@@ -24,7 +26,7 @@ export default function OrphanageData() {
   const navigation = useNavigation();
 
   console.log(route.params);
-
+  const cameraIsOpen = useState(false);
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -63,12 +65,12 @@ export default function OrphanageData() {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
-      alert("Eita! Precisamos de acesso às suas fotos...");
+      alert("Eita! Precisamos de acesso à sua câmera...");
       return;
     }
 
     const result = await ImagePicker.launchCameraAsync({
-      allowsEditing: true,
+      allowsEditing: false,
       quality: 1,
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
     });
