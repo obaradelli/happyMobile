@@ -2,14 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   ScrollView,
   View,
-  StyleSheet,
   Switch,
   Text,
   TextInput,
   TouchableOpacity,
   Image,
-  Modal,
-  ActivityIndicator,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
