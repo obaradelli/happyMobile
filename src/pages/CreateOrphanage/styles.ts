@@ -111,3 +111,11 @@ export const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
 });
+
+import styled from "styled-components/native";
+
+export const Footer = styled.View`
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
