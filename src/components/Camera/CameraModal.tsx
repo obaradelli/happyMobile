@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { styles } from "./styles";
+import { styles } from "../../pages/CreateOrphanage/styles";
 
 interface ICameraModal {
   isOpenCameraModal: boolean;

@@ -15,8 +15,8 @@ import { styles } from "./styles";
 
 import api from "../../services/api";
 import { Camera } from "expo-camera";
-import { CameraModal } from "./CameraModal";
-import { ImagePreviewModal } from "./ImagePreviewModal";
+import { CameraModal } from "../../components/Camera/CameraModal";
+import { ImagePreviewModal } from "../../components/PreviewImage/ImagePreviewModal";
 
 interface OrphanageDataRouteParams {
   position: { latitude: number; longitude: number };

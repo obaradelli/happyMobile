@@ -6,7 +6,8 @@ import OrphanageDetails from "./pages/OrphanageDetails";
 
 import SelectMapPosition from "./pages/CreateOrphanage/SelectMapPosition";
 import OrphanageData from "./pages/CreateOrphanage/OrphanageData";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
+import ListOfOrphanages from "./components/ListOfOrphanages/ListOfOrphanages";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,17 @@ export default function Routes() {
           options={{
             headerShown: true,
             header: () => <Header showCancel={false} title="Orfanato" />,
+          }}
+        />
+
+        <Stack.Screen
+          name="OrphanageListDetails"
+          component={ListOfOrphanages}
+          options={{
+            headerShown: true,
+            header: () => (
+              <Header showCancel={false} title="Lista de Orfanatos" />
+            ),
           }}
         />
 

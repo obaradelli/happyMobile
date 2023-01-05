@@ -1,4 +1,4 @@
-import { styles } from "./styles";
+import { styles } from "../../pages/CreateOrphanage/styles";
 import { FontAwesome } from "@expo/vector-icons";
 import { Image, Modal, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

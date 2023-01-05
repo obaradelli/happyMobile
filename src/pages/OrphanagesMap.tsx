@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   StyleSheet,
@@ -25,10 +25,14 @@ export default function OrphanagesMap() {
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
   const navigation = useNavigation();
 
+  const getOrphanages = useCallback(async () => {
+    const { data } = await api.get("orphanages");
+
+    setOrphanages(data);
+  }, []);
+
   useFocusEffect(() => {
-    api.get("orphanages").then((response) => {
-      setOrphanages(response.data);
-    });
+    getOrphanages();
   });
 
   function handleNavigateToOrphanageDetails(id: number) {
@@ -37,6 +41,10 @@ export default function OrphanagesMap() {
 
   function handleNavigateToCreateOrphanage() {
     navigation.navigate("SelectMapPosition");
+  }
+
+  function handleVanigateToListOrphanageDetails() {
+    navigation.navigate("OrphanageListDetails");
   }
 
   return (
@@ -68,6 +76,7 @@ export default function OrphanagesMap() {
               >
                 <View style={styles.calloutContainer}>
                   <Text style={styles.calloutText}>{orphanage.name}</Text>
+                  <Text style={styles.calloutTextSecondary}>Ver mais</Text>
                 </View>
               </Callout>
             </Marker>
@@ -76,6 +85,12 @@ export default function OrphanagesMap() {
       </MapView>
 
       <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.listOrphanageButton}
+          onPress={handleVanigateToListOrphanageDetails}
+        >
+          <Feather name="list" size={20} color="#fff" />
+        </TouchableOpacity>
         <Text style={styles.footerText}>
           {orphanages.length} orfanatos encontrados
         </Text>
@@ -105,14 +120,19 @@ const styles = StyleSheet.create({
     width: 160,
     height: 48,
     paddingHorizontal: 16,
-    backgroundColor: "rgba(255,255,255,0.8)",
+    backgroundColor: "#0089a5",
     borderRadius: 16,
     justifyContent: "center",
   },
 
   calloutText: {
-    color: "#0089a5",
+    color: "#fff",
     fontSize: 14,
+    fontFamily: "Nunito700B",
+  },
+  calloutTextSecondary: {
+    color: "#ffffffb5",
+    fontSize: 10,
     fontFamily: "Nunito700B",
   },
 
@@ -125,7 +145,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 20,
     height: 56,
-    paddingLeft: 24,
 
     flexDirection: "row",
     justifyContent: "space-between",
@@ -136,10 +155,21 @@ const styles = StyleSheet.create({
 
   footerText: {
     fontFamily: "Nunito700B",
+    // paddingLeft: "20%",
     color: "#8fa7b3",
   },
 
   createOrphanageButton: {
+    width: 56,
+    height: 56,
+    backgroundColor: "#15c3d6",
+    borderRadius: 20,
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  listOrphanageButton: {
     width: 56,
     height: 56,
     backgroundColor: "#15c3d6",
