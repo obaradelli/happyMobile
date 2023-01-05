@@ -107,4 +107,7 @@ export const styles = StyleSheet.create({
     width: 50,
     fontSize: 50,
   },
+  containerModal3: {
+    backgroundColor: "#000",
+  },
 });
