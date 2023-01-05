@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   StyleSheet,
@@ -12,8 +12,6 @@ import { Feather } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import mapMarker from "../images/mapMarker.png";
-import { BorderlessButton, RectButton } from "react-native-gesture-handler";
-import { PureNativeButton } from "react-native-gesture-handler/lib/typescript/components/GestureButtons";
 import api from "../services/api";
 
 interface Orphanage {
