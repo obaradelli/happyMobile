@@ -15,7 +15,6 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 import mapMarkerImg from "../images/mapMarker.png";
 import api from "../services/api";
-import { Footer } from "./CreateOrphanage/styles";
 
 interface OrphanageDetailsRouteParam {
   id: number;
@@ -37,8 +36,9 @@ interface Orphanage {
 }
 
 export default function OrphanageDetails() {
-  const route = useRoute();
   const [orphanage, setOrphanage] = useState<Orphanage>();
+
+  const route = useRoute();
 
   const params = route.params as OrphanageDetailsRouteParam;
 
@@ -64,8 +64,14 @@ export default function OrphanageDetails() {
 
   const navigation = useNavigation();
 
-  function handleNavigateToOrphanageData() {
-    navigation.navigate("OrphanageData", {});
+  // Fazer uma nova página para chamar na função de editar.
+  function handleNavigateToEditPage(id: number) {
+    navigation.navigate("EditOrphanage", { id });
+  }
+
+  function handleNavigateToMapAndDeleteOrphanage() {
+    navigation.navigate("OrphanagesMap");
+    api.delete(`orphanages/delete/${params.id}`).then((response) => {});
   }
 
   return (
@@ -158,12 +164,18 @@ export default function OrphanageDetails() {
         <TouchableOpacity
           style={styles.Button1}
           onPress={() => {
-            handleNavigateToOrphanageData();
+            handleNavigateToEditPage(orphanage.id);
           }}
         >
           <Text style={styles.contactButtonText}>Editar Orfanato</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Button2} onPress={() => {}}>
+
+        <TouchableOpacity
+          style={styles.Button2}
+          onPress={() => {
+            handleNavigateToMapAndDeleteOrphanage();
+          }}
+        >
           <Text style={styles.contactButtonText}>Deletar Orfanato</Text>
         </TouchableOpacity>
       </View>

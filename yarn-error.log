@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/max/.nvm/versions/node/v16.13.0/bin/node /usr/local/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js add @types/styled-components/native
+  /Users/max/.nvm/versions/node/v16.13.0/bin/node /usr/local/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js add @types/react-navigation/native -D
 
 PATH: 
   /usr/local/opt/php@7.3/sbin:/usr/local/opt/php@7.3/bin:/Users/max/.zinit/polaris/bin:/Users/max/.nvm/versions/node/v16.13.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fstyled-components/native: Request "https://registry.yarnpkg.com/@types%2fstyled-components/native" returned a 405
+  Error: https://registry.yarnpkg.com/@types%2freact-navigation/native: Request "https://registry.yarnpkg.com/@types%2freact-navigation/native" returned a 405
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:67038:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:140883:22)
       at Request.emit (node:events:390:28)
@@ -43,6 +43,7 @@ npm manifest:
       "@react-navigation/native": "^6.1.1",
       "@react-navigation/native-stack": "^6.9.7",
       "@react-navigation/stack": "^6.3.10",
+      "@types/styled-components": "^5.1.26",
       "axios": "^0.21.1",
       "expo": "~47.0.9",
       "expo-camera": "~13.1.0",
@@ -65,6 +66,7 @@ npm manifest:
       "@babel/core": "^7.12.9",
       "@types/react": "~18.0.14",
       "@types/react-native": "~0.70.6",
+      "@types/react-router-dom": "^5.3.3",
       "typescript": "^4.6.3"
     },
     "private": true
@@ -1947,6 +1949,19 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.41.tgz#f6ecf57d1b12d2befcce00e928a6a097c22980aa"
     integrity sha512-ewXv/ceBaJprikMcxCmWU1FKyMAQ2X7a9Gtmzw8fcg2kIePI1crERDM818W+XYrxqdBBOdlf2rm137bU+BltCA==
   
+  "@types/history@^4.7.11":
+    version "4.7.11"
+    resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
+    integrity sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==
+  
+  "@types/hoist-non-react-statics@*":
+    version "3.3.1"
+    resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+    integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+    dependencies:
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+  
   "@types/invariant@^2.2.35":
     version "2.2.35"
     resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.35.tgz#cd3ebf581a6557452735688d8daba6cf0bd5a3be"
@@ -1988,6 +2003,23 @@ Lockfile:
     dependencies:
       "@types/react" "*"
   
+  "@types/react-router-dom@^5.3.3":
+    version "5.3.3"
+    resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
+    integrity sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==
+    dependencies:
+      "@types/history" "^4.7.11"
+      "@types/react" "*"
+      "@types/react-router" "*"
+  
+  "@types/react-router@*":
+    version "5.1.20"
+    resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-5.1.20.tgz#88eccaa122a82405ef3efbcaaa5dcdd9f021387c"
+    integrity sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==
+    dependencies:
+      "@types/history" "^4.7.11"
+      "@types/react" "*"
+  
   "@types/react@*", "@types/react@~18.0.14":
     version "18.0.26"
     resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
@@ -2001,6 +2033,15 @@ Lockfile:
     version "0.16.2"
     resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
     integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+  
+  "@types/styled-components@^5.1.26":
+    version "5.1.26"
+    resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.26.tgz#5627e6812ee96d755028a98dae61d28e57c233af"
+    integrity sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==
+    dependencies:
+      "@types/hoist-non-react-statics" "*"
+      "@types/react" "*"
+      csstype "^3.0.2"
   
   "@types/yargs-parser@*":
     version "21.0.0"

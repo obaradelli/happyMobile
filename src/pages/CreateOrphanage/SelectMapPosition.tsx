@@ -8,7 +8,6 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import { RectButton } from "react-native-gesture-handler";
 import MapView, { MapEvent, Marker } from "react-native-maps";
 
 import mapMarkerImg from "../../images/mapMarker.png";
