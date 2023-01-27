@@ -6,7 +6,7 @@ import OrphanageDetails from "./pages/OrphanageDetails";
 
 import SelectMapPosition from "./pages/CreateOrphanage/SelectMapPosition";
 import OrphanageData from "./pages/CreateOrphanage/OrphanageData";
-import Header from "./components/Header/Header";
+import Header1 from "./components/Header/Header";
 import ListOfOrphanages from "./components/ListOfOrphanages/ListOfOrphanages";
 import EditOrphanage from "./pages/EditOrphanage";
 import Login from "./pages/Login/Login";
@@ -23,6 +23,7 @@ export default function Routes() {
         }}
       >
         <Stack.Screen name="Login" component={Login} />
+
         <Stack.Screen name="OrphanagesMap" component={OrphanagesMap} />
 
         <Stack.Screen
@@ -30,7 +31,7 @@ export default function Routes() {
           component={OrphanageDetails}
           options={{
             headerShown: true,
-            header: () => <Header showCancel={false} title="Orfanato" />,
+            header: () => <Header1 showCancel={false} title="Orfanato" />,
           }}
         />
 
@@ -40,7 +41,7 @@ export default function Routes() {
           options={{
             headerShown: true,
             header: () => (
-              <Header showCancel={false} title="Lista de Orfanatos" />
+              <Header1 showCancel={false} title="Lista de Orfanatos" />
             ),
           }}
         />
@@ -50,7 +51,7 @@ export default function Routes() {
           component={EditOrphanage}
           options={{
             headerShown: true,
-            header: () => <Header showCancel={false} title="Edite os dados" />,
+            header: () => <Header1 showCancel={false} title="Edite os dados" />,
           }}
         />
 
@@ -59,7 +60,7 @@ export default function Routes() {
           component={SelectMapPosition}
           options={{
             headerShown: true,
-            header: () => <Header title="Selecione no mapa" />,
+            header: () => <Header1 title="Selecione no mapa" />,
           }}
         />
         <Stack.Screen
@@ -67,7 +68,7 @@ export default function Routes() {
           component={OrphanageData}
           options={{
             headerShown: true,
-            header: () => <Header title="Iforme os dados" />,
+            header: () => <Header1 title="Iforme os dados" />,
           }}
         />
       </Stack.Navigator>

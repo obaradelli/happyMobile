@@ -1,18 +1,11 @@
-import { LogBox, Switch, Text, View } from "react-native";
+import { Switch, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import api from "../../services/api";
 import Logotipo from "../../images/Logotipo.svg";
-import {
-  ButtonLogin,
-  Container,
-  DivLogin,
-  Linear,
-  Password,
-  User,
-} from "./styles";
+import { ButtonLogin, Container, DivLogin, Password, User } from "./styles";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -100,6 +93,7 @@ export default function Login() {
           <Switch
             value={rememberLogin}
             onValueChange={handleRememberLogin}
+            thumbColor="#ffd666"
             style={{ marginRight: 10 }}
           ></Switch>
           <Text style={{ color: "white" }}>Lembrar Login</Text>
