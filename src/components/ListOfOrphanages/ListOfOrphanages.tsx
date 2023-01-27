@@ -63,24 +63,19 @@ export default function ListOfOrphanages() {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    // marginBottom: 20,
+
     alignItems: "center",
     flexDirection: "row",
     padding: 10,
     paddingLeft: 5,
   },
   border: {
-    // flexDirection: "row",
-
-    // flex: 0,
     borderBottomWidth: 1,
     borderBottomColor: "#8fa7b3",
   },
   image: {
     height: 100,
     width: 100,
-    // resizeMode: "cover",
-
     borderRadius: 5,
   },
   text: {

@@ -59,37 +59,51 @@ export default function EditOrphanage() {
     setIsOpenModalImagePreview(value);
   };
 
-  useEffect(() => {
+  const getOrphanage = () => {
     api.get(`orphanages/${params.id}`).then((response) => {
       setOrphanage(response.data);
+      response.data.images.map(({ url }) => {
+        setImages((prev) => [...prev, url]);
+      });
     });
+  };
+
+  useEffect(() => {
+    getOrphanage();
   }, [params.id]);
 
-  async function handleCreateOrphanage() {
-    // try {
-    //   const data = new FormData();
-    //   data.append("name", name);
-    //   data.append("about", about);
-    //   data.append("latitude", String(latitude));
-    //   data.append("longitude", String(longitude));
-    //   data.append("instructions", instructions);
-    //   data.append("opening_hours", opening_hours);
-    //   data.append("open_on_weekends", String(open_on_weekends));
-    //   images.forEach((image, index) =>
-    //     data.append("images", {
-    //       name: `image_${index}.jpg`,
-    //       type: "image/jpg",
-    //       uri: image,
-    //     } as any)
-    //   );
-    //   await api.post("orphanages", data);
-    //   navigation.navigate("OrphanagesMap");
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  function handleNavigateToMapAndDeleteOrphanage() {
+    navigation.navigate("OrphanagesMap");
+    api.delete(`orphanages/delete/${params.id}`).then((response) => {});
   }
 
-  async function savePicture(capturedPhoto: string) {
+  async function handleCreateOrphanage() {
+    try {
+      const data = new FormData();
+      data.append("name", orphanage.name);
+      data.append("about", orphanage.about);
+      data.append("latitude", String(orphanage.latitude));
+      data.append("longitude", String(orphanage.longitude));
+      data.append("instructions", orphanage.instructions);
+      data.append("opening_hours", orphanage.opening_hours);
+      data.append("open_on_weekends", String(orphanage.open_on_weekends));
+      images.forEach((image, index) =>
+        data.append("images", {
+          name: `image_${index}.jpg`,
+          type: "image/jpg",
+          uri: image,
+        } as any)
+      );
+
+      await api.post("orphanages", data);
+      handleNavigateToMapAndDeleteOrphanage();
+      navigation.navigate("OrphanagesMap");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function savePicture(capturedPhoto: string) {
     setImages([...images, capturedPhoto]);
   }
 
@@ -259,7 +273,7 @@ export default function EditOrphanage() {
 
         <TouchableOpacity
           style={styles.nextButton}
-          onPress={handleCreateOrphanage}
+          onPress={() => handleCreateOrphanage()}
         >
           <Text style={styles.nextButtonText}>Editar</Text>
         </TouchableOpacity>

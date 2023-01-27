@@ -17,7 +17,7 @@ import { styles } from "../../pages/CreateOrphanage/styles";
 interface ICameraModal {
   isOpenCameraModal: boolean;
   setIsOpenCameraModal: (value: boolean) => void;
-  savePicture(capturedPhoto: string): Promise<void>;
+  savePicture(capturedPhoto: string): void;
 }
 
 export const CameraModal = ({

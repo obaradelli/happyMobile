@@ -9,6 +9,7 @@ import OrphanageData from "./pages/CreateOrphanage/OrphanageData";
 import Header from "./components/Header/Header";
 import ListOfOrphanages from "./components/ListOfOrphanages/ListOfOrphanages";
 import EditOrphanage from "./pages/EditOrphanage";
+import Login from "./pages/Login/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export default function Routes() {
           contentStyle: { backgroundColor: "#f2f3f5" },
         }}
       >
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="OrphanagesMap" component={OrphanagesMap} />
 
         <Stack.Screen

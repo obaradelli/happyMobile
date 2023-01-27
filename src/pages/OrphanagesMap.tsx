@@ -91,8 +91,11 @@ export default function OrphanagesMap() {
         >
           <Feather name="list" size={20} color="#fff" />
         </TouchableOpacity>
+
         <Text style={styles.footerText}>
-          {orphanages.length} orfanatos encontrados
+          {orphanages.length === 1
+            ? `1 orfanato encontrado`
+            : `${orphanages.length} orfanatos encontrados`}
         </Text>
 
         <TouchableOpacity
@@ -155,7 +158,6 @@ const styles = StyleSheet.create({
 
   footerText: {
     fontFamily: "Nunito700B",
-    // paddingLeft: "20%",
     color: "#8fa7b3",
   },
 

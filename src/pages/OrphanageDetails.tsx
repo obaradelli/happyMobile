@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Linking,
+  Alert,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { Feather } from "@expo/vector-icons";
@@ -42,6 +43,8 @@ export default function OrphanageDetails() {
 
   const params = route.params as OrphanageDetailsRouteParam;
 
+  const navigation = useNavigation();
+
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then((response) => {
       setOrphanage(response.data);
@@ -62,9 +65,6 @@ export default function OrphanageDetails() {
     );
   }
 
-  const navigation = useNavigation();
-
-  // Fazer uma nova página para chamar na função de editar.
   function handleNavigateToEditPage(id: number) {
     navigation.navigate("EditOrphanage", { id });
   }
@@ -72,6 +72,13 @@ export default function OrphanageDetails() {
   function handleNavigateToMapAndDeleteOrphanage() {
     navigation.navigate("OrphanagesMap");
     api.delete(`orphanages/delete/${params.id}`).then((response) => {});
+  }
+
+  async function handleDelete() {
+    Alert.alert("Deletar", "Deseja deletar o orfanato?", [
+      { text: "Não", style: "cancel" },
+      { text: "Sim", onPress: () => handleNavigateToMapAndDeleteOrphanage() },
+    ]);
   }
 
   return (
@@ -173,7 +180,7 @@ export default function OrphanageDetails() {
         <TouchableOpacity
           style={styles.Button2}
           onPress={() => {
-            handleNavigateToMapAndDeleteOrphanage();
+            handleDelete();
           }}
         >
           <Text style={styles.contactButtonText}>Deletar Orfanato</Text>
